@@ -7,9 +7,9 @@ def roman_to_int(roman_string):
 
     number = len(roman_string)
     value_int = romans[roman_string[number-1]]
-    for i in range(number -1, 0, -1):
-        current_value = romans[roman_string[1]]
-        previous_value = romans[roman_sting[i-1]]
+    for i in range(number - 1, 0, -1):
+        current_value = romans[roman_string[i]]
+        previous_value = romans[roman_string[i-1]]
 
         if previous_value >= current_value:
             value_int += previous_value
