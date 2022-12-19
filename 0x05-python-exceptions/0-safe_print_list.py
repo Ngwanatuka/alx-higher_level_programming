@@ -2,7 +2,7 @@
 def safe_print_list(my_list=[], x=0):
     # Initialize a counter variable to keep track of the number of elements printed
     counter = 0
-    
+
     # Try to print x elements of the list
     try:
         for i in range(x):
@@ -29,4 +29,4 @@ def safe_print_list(my_list=[], x=0):
         # Print a new line after all the elements have been printed
         print()
         # Return the counter
-        return counter#!/usr/bin/python3
+        return counter
