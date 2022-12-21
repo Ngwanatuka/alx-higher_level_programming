@@ -1,9 +1,6 @@
 #!/usr/bin/python3
+''' A class representing a square.'''
+
 class Square:
-    """ A class representing a square.
-
-    This class does not have any attributes or methods, and is 
-    simply a placeholder for future development.
-    """
-
-    pass
+    ''' An empty class'''
+   pass
