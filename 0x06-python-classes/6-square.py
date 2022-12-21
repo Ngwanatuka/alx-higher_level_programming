@@ -12,11 +12,11 @@ class Square:
 
     Attributes:
         __size (int): The size of the square.
-        __position (tuple): The position of the square, represented as a tuple of 2 integers.
+        __position (tuple): The position of the square.
 
     Raises:
-        TypeError: If the size is not an integer, or if the position is not a tuple of 2 positive integers.
-        ValueError: If the size is less than 0, or if the position is not a tuple of 2 positive integers.
+        TypeError: If the size is not an integer or if the position is not a tuple of 2 positive integers.
+        ValueError: If the size is less than 0.
     """
 
     def __init__(self, size=0, position=(0, 0)):
@@ -24,12 +24,12 @@ class Square:
         Initialize the Square class.
 
         Args:
-            size (int, optional): The size of the square. Defaults to 0.
-            position (tuple, optional): The position of the square, represented as a tuple of 2 integers. Defaults to (0, 0).
+            size (int, optional): The size of the square. Default is 0.
+            position (tuple, optional): The position of the square. Default is (0, 0).
 
         Raises:
-            TypeError: If the size is not an integer, or if the position is not a tuple of 2 positive integers.
-            ValueError: If the size is less than 0, or if the position is not a tuple of 2 positive integers.
+            TypeError: If the size is not an integer or if the position is not a tuple of 2 positive integers.
+            ValueError: If the size is less than 0.
         """
         self.size = size
         self.position = position
@@ -50,7 +50,7 @@ class Square:
         Get the position of the square.
 
         Returns:
-            tuple: The position of the square, represented as a tuple of 2 integers.
+            tuple: The position of the square.
         """
         return self.__position
 
@@ -60,4 +60,11 @@ class Square:
         Set the size of the square.
 
         Args:
-            value (int): The
+            value (int): The new size of the square.
+
+        Raises:
+            TypeError: If the size is not an integer.
+            ValueError: If the size is less than 0.
+        """
+        if not isinstance(value, int):
+            raise
