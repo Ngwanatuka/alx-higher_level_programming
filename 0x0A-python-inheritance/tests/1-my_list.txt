@@ -1,0 +1,38 @@
+"""
+MyList
+======
+
+A class that inherits from the built-in 'list' class.
+
+This class provides a convenient way to print lists in sorted, ascending order.
+
+Examples
+--------
+
+Creating an instance of MyList:
+
+>>> my_list = MyList([3, 2, 1])
+
+Printing the list in sorted order:
+
+>>> my_list.print_sorted()
+[1, 2, 3]
+
+The original list is not modified by the print_sorted() method:
+
+>>> print(my_list)
+[3, 2, 1]
+
+Note that MyList can also be instantiated with no arguments, creating an empty list:
+
+>>> empty_list = MyList()
+>>> print(empty_list)
+[]
+
+Methods
+-------
+
+print_sorted()
+    Prints the list in sorted, ascending order.
+
+"""
