@@ -1,32 +1,22 @@
-#!/bin/usr/python3
-""" A Module that contains class Rectangle,
-inherits
+#!/usr/bin/python3
+""" Module that contains class Rectangle,
+inheritance of class Base
 """
 from models.base import Base
 
+
 class Rectangle(Base):
-    """ class Rectangle """
-    def __init__(self, width, height, x=0, y=0):
+    """ Class Rectangle """
 
-    """
-    Initializes a new Rectangle instance
+    def __init__(self, width, height, x=0, y=0, id=None):
+        """ Initializes instances """
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
+        super().__init__(id)
 
-    Arg:
-    width (int): The width of the rectangle.
-    height (int): The height of the rectangle.
-    x (int, optional): The x-coordinate of the rectangle.
-    Default to 0.
-    y (int, optional): The y-coordinate of the rectangle.
-    Defaults to 0.
-    """
-
-        super().__init__()
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
-
-        @property
+    @property
     def width(self):
         """ width getter """
         return self.__width
