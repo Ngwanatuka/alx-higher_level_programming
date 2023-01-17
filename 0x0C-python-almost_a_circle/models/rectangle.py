@@ -7,7 +7,7 @@ from models.base import Base
 
 class Rectangle(Base):
     """ A class that represents a rectangle and inherits from Base class """
-    def __init__(self, width, height, x=0, y=0, id=0):
+    def __init__(self, width, height, x=0, y=0, id=None):
         """
         Inititialize a new Rectangle instance.
 
@@ -25,12 +25,11 @@ class Rectangle(Base):
             x or y is under 0.
         """
 
-        super().__init__()
+        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
-        self.id = id
 
     @property
     def width(self):
