@@ -30,8 +30,9 @@ if __name__ == '__main__':
 
     """Execute the query
     """
-    cursor.execute("SELECT * FROM states WHERE name\
-            LIKE 'N%' ORDER BY states.id")
+    query = "SELECT * FROM states WHERE name\
+            LIKE 'N%' ORDER BY id ASC"
+    cursor.execute(query)
 
     """Get the result
     """
