@@ -43,4 +43,4 @@ if __name__ == '__main__':
 
     """Close the database connection
     """
-    db.close
+    db.close()
