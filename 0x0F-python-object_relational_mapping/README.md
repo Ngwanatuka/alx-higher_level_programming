@@ -1,0 +1,1 @@
+Object-relational mapping (ORM) is a technique that enables developers to work with databases using an object-oriented programming language like Python. ORMs provide an abstraction layer that allows developers to work with databases in a way that is more natural and familiar to them, by treating database tables as classes and rows as objects.
