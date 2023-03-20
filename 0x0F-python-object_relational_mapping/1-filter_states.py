@@ -1,47 +1,27 @@
 #!/usr/bin/python3
-"""This module runs a script that selects
-states that start with N
-"""
-
+""" selecting with mysqldb """
 import MySQLdb
 import sys
 
-if __name__ == '__main__':
-    """get the command line arguments
-    """
-    mysql_user = sys.argv[1]
-    mysql_password = sys.argv[2]
-    db_name = sys.argv[3]
 
-    """Connect to the database
-    """
-
-    db = MySQLdb.connect(
-            host='localhost',
-            user=mysql_user,
-            passwd=mysql_password,
-            db=db_name,
-            port=3306
-            )
-    """get a cursor object
-    """
-
-    cursor = db.cursor()
-
-    """Execute the query
-    """
-    query = "SELECT * FROM states WHERE name\
-            LIKE 'N%' ORDER BY id ASC"
-    cursor.execute(query)
-
-    """Get the result
-    """
-    result = cursor.fetchall()
-    """Print the results
-    """
-    for row in result:
-        print(row)
-
-    """Close the database connection
-    """
-    db.close()
+if __name__ == "__main__":
+    try:
+        connection = MySQLdb.connect(
+            host="localhost",
+            user=sys.argv[1],
+            passwd=sys.argv[2],
+            port=3306,
+            db=sys.argv[3]
+        )
+    except MySQLdb.Error:
+        print("error connecting")
+    cur = connection.cursor()
+    try:
+        cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id")
+        rows = cur.fetchall()
+        for row in rows:
+            print(row)
+    except MySQLdb.Error:
+        print("execution failed")
+    cur.close()
+    connection.close()
