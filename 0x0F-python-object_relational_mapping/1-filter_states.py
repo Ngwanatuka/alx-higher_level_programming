@@ -30,12 +30,12 @@ if __name__ == '__main__':
 
     """Execute the query
     """
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id")
+    cursor.execute("SELECT * FROM states WHERE name\
+            LIKE 'N%' ORDER BY states.id")
 
     """Get the result
     """
     result = cursor.fetchall()
-
     """Print the results
     """
     for row in result:
