@@ -1,44 +1,30 @@
 #!/usr/bin/python3
-"""Script that takes in the name of a state\
-        as an argument and lists all cities of that state,
-    using the database hbtn_0e_4_usa.
-    SQL injection free!
-"""
-
+""" selecting with mysqldb """
 import MySQLdb
 import sys
 
 
-if __name__ == '__main__':
-    args = sys.argv
-    if len(args) != 5:
-        print("Usage: {} username password\
-                database state_name".format(args[0]))
-        exit(1)
-
-    username = args[1]
-    password = args[2]
-    database = args[3]
-    state_name = args[4]
-
+if __name__ == "__main__":
     try:
-        db = MySQLdb.connect(
+        connection = MySQLdb.connect(
             host="localhost",
+            user=sys.argv[1],
+            passwd=sys.argv[2],
             port=3306,
-            user=username,
-            passwd=password,
-            db=database,
-            charset="utf8")
-        cursor = db.cursor()
-        query = "SELECT cities.* FROM cities \
-                 JOIN states ON cities.state_id = states.id \
-                 WHERE states.name = %s ORDER BY cities.id ASC"
-        cursor.execute(query, (state_name,))
-        results = cursor.fetchall()
-        for row in results:
-            print(row)
-        cursor.close()
-        db.close()
-    except MySQLdb.Error as e:
-        print("MySQL Error [{}]: {}".format(e.args[0], e.args[1]))
-        exit(1)
+            db=sys.argv[3]
+        )
+    except MySQLdb.Error:
+        print("error connecting")
+    try:
+        cur = connection.cursor()
+        cur.execute("SELECT cities.name FROM cities\
+        INNER JOIN states\
+        ON cities.state_id = states.id\
+        WHERE states.name = %s\
+        ORDER BY cities.id", (sys.argv[4],))
+        rows = cur.fetchall()
+        print(", ".join([row[0] for row in rows]))
+    except MySQLdb.Error:
+        print("execution failed")
+    cur.close()
+    connection.close()
