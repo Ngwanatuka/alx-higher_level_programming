@@ -1,40 +1,30 @@
 #!/usr/bin/python3
-"""Script that lists all cities\
-        from the database hbtn_0e_4_usa"""
-
+""" selecting with mysqldb """
 import MySQLdb
 import sys
 
 
-if __name__ == '__main__':
-    args = sys.argv
-    if len(args) != 4:
-        print("Usage: {} username\
-                password database".format(args[0]))
-        exit(1)
-
-    username = args[1]
-    password = args[2]
-    database = args[3]
-
+if __name__ == "__main__":
     try:
-        db = MySQLdb.connect(
+        connection = MySQLdb.connect(
             host="localhost",
+            user=sys.argv[1],
+            passwd=sys.argv[2],
             port=3306,
-            user=username,
-            passwd=password,
-            db=database,
-            charset="utf8")
-        cursor = db.cursor()
-        query = "SELECT * FROM cities\
-                ORDER BY id ASC"
-        cursor.execute(query)
-        results = cursor.fetchall()
-        for row in results:
+            db=sys.argv[3]
+        )
+    except MySQLdb.Error:
+        print("error connecting")
+    try:
+        cur = connection.cursor()
+        cur.execute("SELECT cities.id, cities.name, states.name FROM cities\
+        INNER JOIN states\
+        ON cities.state_id = states.id\
+        ORDER BY cities.id")
+        rows = cur.fetchall()
+        for row in rows:
             print(row)
-        cursor.close()
-        db.close()
-    except MySQLdb.Error as e:
-        print("MySQL Error [{}]:\
-                {}".format(e.args[0], e.args[1]))
-        exit(1)
+    except MySQLdb.Error:
+        print("execution failed")
+    cur.close()
+    connection.close()
