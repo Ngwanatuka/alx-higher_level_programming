@@ -1,21 +1,19 @@
 #!/usr/bin/python3
+"""
+Defines class State
+"""
 
-""" sql alchemy """
-from sqlalchemy import create_engine, Sequence, Column, Integer, String
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-
 
 Base = declarative_base()
 
 
 class State(Base):
-    """ State object """
+    """
+    Class State; instance of Base
+    Linked to MySQL table "states"
+    """
     __tablename__ = 'states'
-    id = Column(
-        Integer,
-        Sequence('my_sequence'),
-        primary_key=True,
-        nullable=False
-        )
+    id = Column(Integer, nullable=False, primary_key=True)
     name = Column(String(128), nullable=False)
