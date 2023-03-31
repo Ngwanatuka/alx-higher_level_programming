@@ -1,10 +1,3 @@
 #!/bin/bash
-
-# Take in URL as argument
-url="$1"
-
-# Send GET request using curl and display response body
-curl -sL "$url"
-
-# Print "Route 2"
-echo "Route 2"
+# send a GET request to an URL with curl, and display the body of the response
+curl -sL "$1"
