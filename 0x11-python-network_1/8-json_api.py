@@ -12,7 +12,7 @@ if __name__ == '__main__':
         letter = sys.argv[1]
     else:
         letter = ""
-    url = "http://0.0.0.0:5000/search_user"
+    url = "http://26550f78c48a.50da2fcc.alx-cod.online:5000/search_user"
     response = requests.post(url, data={"q": letter})
 
     try:
