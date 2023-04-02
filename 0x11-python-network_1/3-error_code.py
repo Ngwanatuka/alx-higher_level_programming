@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """
-This script takes in a URL as a command line argument, sends a request to the URL and
-displays the body of the response (decoded in utf-8). It also handles HTTPError exceptions
+This script takes in a URL as a command line argument,
+sends a request to the URL and
+displays the body of the response (decoded in utf-8).
+It also handles HTTPError exceptions
 and prints out the error code.
 """
 
